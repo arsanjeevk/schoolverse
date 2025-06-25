@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Progress Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #fbe9e7);
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+
+    .title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 600;
+      color: #2e7d32;
+      margin-bottom: 30px;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 22px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="title">📊 Student Progress Analysis</div>
+    <canvas id="progressChart"></canvas>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('progressChart').getContext('2d');
+
+    const progressChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Test 1', 'Test 2', 'Mid-Term', 'Test 3', 'Final Exam'],
+        datasets: [
+          {
+            label: 'Marks Obtained',
+            data: [72, 85, 78, 90, 88],
+            backgroundColor: [
+              '#4db6ac',
+              '#81c784',
+              '#64b5f6',
+              '#9575cd',
+              '#ffb74d'
+            ],
+            borderRadius: 10,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              font: {
+                size: 14
+              }
+            }
+          },
+          tooltip: {
+            backgroundColor: '#fff',
+            titleColor: '#000',
+            bodyColor: '#333',
+            borderColor: '#ccc',
+            borderWidth: 1
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+              stepSize: 10,
+              color: '#444'
+            },
+            title: {
+              display: true,
+              text: 'Marks (%)',
+              color: '#2e7d32',
+              font: {
+                size: 14
+              }
+            }
+          },
+          x: {
+            ticks: {
+              color: '#444'
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

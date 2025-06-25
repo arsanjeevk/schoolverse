@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PTM Module</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .main-content {
+            background: #f9fafb;
+            padding: 20px 20px 100px 20px;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #0f172a;
+        }
+
+        .header p {
+            color: #475569;
+            margin-top: 8px;
+        }
+
+        .ptm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .ptm-card {
+            background: #ffffff;
+            border-left: 6px solid #3b82f6;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .ptm-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .ptm-card i {
+            font-size: 1.6rem;
+            color: #2563eb;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .ptm-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+            color: #1e3a8a;
+        }
+
+        .ptm-card p {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            color: #374151;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            background: #e0f2fe;
+            color: #0284c7;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .status.completed {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        @media (max-width: 600px) {
+            .ptm-card {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- top and bottom navigation starts here -->
+
+    <!-- Header -->
+    <header>
+        <div class="hamburger" onclick="toggleSidebar()">☰</div>
+        <div class="bell"><i class="fa-solid fa-bell"></i></div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span class="close-btn" onclick="toggleSidebar()">✖</span>
+        </div>
+        <div class="profile-section">
+            <img src="Untitled (22).png" alt="Profile Picture">
+            <h3>Mary Jane</h3>
+            <p>Student</p>
+        </div>
+        <ul>
+            <li><a href="#" onclick="switchTab('profile')">Profile</a></li>
+            <li><a href="#">Privacy & Policy</a></li>
+            <li><a href="#">Terms & condition</a></li>
+            <li><a href="#">Log Out</a></li>
+        </ul>
+    </aside>
+
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+
+    <div class="bottom-nav">
+        <a href="index.html"><button class="active">
+                <i class="fas fa-home"></i>
+                <p>Home</p>
+            </button></a>
+        <a href="explore.html"><button>
+                <i class="fa-solid fa-compass"></i>
+                <p>Explore</p>
+            </button></a>
+        <a href="performance.html"><button>
+                <i class="fa-solid fa-square-poll-vertical"></i>
+                <p>Results</p>
+            </button></a>
+        <a href="contact.html"><button>
+                <i class="fa-solid fa-headset"></i>
+                <p>Contact</p>
+            </button></a>
+    </div>
+
+
+
+
+
+    <!-- main content starts here -->
+    <section class="main-content">
+        <div class="container">
+            <div class="header" data-aos="fade-down">
+                <h1>Parent-Teacher Meeting (PTM)</h1>
+                <p>Stay updated with upcoming and past meeting schedules</p>
+            </div>
+
+            <div class="ptm-list">
+                <div class="ptm-card" data-aos="fade-up">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Class 8A - Mid Term PTM</h3>
+                    <p><strong>Date:</strong> 30 June 2025</p>
+                    <p><strong>Time:</strong> 10:00 AM - 12:00 PM</p>
+                    <p><strong>Teacher:</strong> Mrs. Priya Sharma</p>
+                    <span class="status">Scheduled</span>
+                </div>
+
+                <div class="ptm-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Class 10B - Final PTM</h3>
+                    <p><strong>Date:</strong> 20 April 2025</p>
+                    <p><strong>Time:</strong> 2:00 PM - 3:30 PM</p>
+                    <p><strong>Teacher:</strong> Mr. Rohit Verma</p>
+                    <span class="status completed">Completed</span>
+                </div>
+
+                <div class="ptm-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Class 6C - Orientation Meet</h3>
+                    <p><strong>Date:</strong> 10 March 2025</p>
+                    <p><strong>Time:</strong> 9:00 AM - 10:30 AM</p>
+                    <p><strong>Teacher:</strong> Ms. Anjali Mehra</p>
+                    <span class="status completed">Completed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
+    </script>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

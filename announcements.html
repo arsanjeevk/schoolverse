@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Announcements</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --bg-glass: rgba(255, 255, 255, 0.8);
+      --border-glass: rgba(255, 255, 255, 0.3);
+      --shadow-glass: rgba(0, 0, 0, 0.1);
+    }
+
+    .main-content {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #fbe9e7);
+      padding: 20px 20px 70px 20px;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      /* backdrop-filter: blur(12px);
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px; */
+      padding: 40px 30px;
+      /* box-shadow: 0 12px 30px var(--shadow-glass); */
+    }
+
+    .title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 600;
+      color: #2e7d32;
+      margin-bottom: 40px;
+      letter-spacing: 0.5px;
+    }
+
+    .announcement {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      /* border-left: 6px solid #2e7d32; */
+      border-radius: 16px;
+      padding: 20px 25px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a237e;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      color: white;
+      text-transform: uppercase;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .exam {
+      background-color: #42a5f5;
+    }
+
+    .cultural {
+      background-color: #ab47bc;
+    }
+
+    .meeting {
+      background-color: #26a69a;
+    }
+
+    .seminar {
+      background-color: #ef6c00;
+    }
+
+    .function {
+      background-color: #5c6bc0;
+    }
+
+    .type1 {
+      border-left: 6px solid #42a5f5;
+    }
+
+    .type2 {
+      border-left: 6px solid #ab47bc;
+    }
+
+    .type3 {
+      border-left: 6px solid #26a69a;
+    }
+
+    .type4 {
+      border-left: 6px solid #ef6c00;
+    }
+
+    .type5 {
+      border-left: 6px solid #5c6bc0;
+    }
+
+    .card-body {
+      font-size: 15px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .card-footer {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #777;
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 25px 20px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .card-title {
+        font-size: 16px;
+        flex-direction: row;
+      }
+
+      .badge {
+        font-size: 11px;
+        margin-top: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .title {
+        font-size: 24px;
+      }
+
+      .card-title {
+        font-size: 15px;
+        gap: 5px;
+      }
+
+      .card-body {
+        font-size: 14px;
+      }
+
+      .card-footer {
+        font-size: 12px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        max-width: 1000px;
+        margin: auto;
+        backdrop-filter: blur(12px);
+        background: var(--bg-glass);
+        border: 1px solid var(--border-glass);
+        border-radius: 20px;
+        padding: 40px 30px;
+        box-shadow: 0 12px 30px var(--shadow-glass);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- top and bottom navbar -->
+
+  <!-- Header -->
+  <header>
+    <div class="hamburger" onclick="toggleSidebar()">☰</div>
+    <div class="bell"><i class="fa-solid fa-bell"></i></div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="close-btn" onclick="toggleSidebar()">✖</span>
+    </div>
+    <div class="profile-section">
+      <img src="Untitled (22).png" alt="Profile Picture">
+      <h3>Mary Jane</h3>
+      <p>Student</p>
+    </div>
+    <ul>
+      <li><a href="#" onclick="switchTab('profile')">Profile</a></li>
+      <li><a href="#">Privacy & Policy</a></li>
+      <li><a href="#">Terms & condition</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </aside>
+
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+
+  <div class="bottom-nav">
+    <a href="index.html"><button class="active">
+        <i class="fas fa-home"></i>
+        <p>Home</p>
+      </button></a>
+    <a href="explore.html"><button>
+        <i class="fa-solid fa-compass"></i>
+        <p>Explore</p>
+      </button></a>
+    <a href="performance.html"><button>
+        <i class="fa-solid fa-square-poll-vertical"></i>
+        <p>Results</p>
+      </button></a>
+    <a href="contact"><button>
+        <i class="fa-solid fa-headset"></i>
+        <p>Contact</p>
+      </button></a>
+  </div>
+
+
+
+  <!-- main contents starts -->
+  <section class="main-content">
+    <div class="container">
+      <div class="title">📢 School Announcements</div>
+
+      <div class="announcement">
+
+        <div class="card type1" data-aos="zoom-in-right">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-file-alt"></i> Final Exam Timetable Released</div>
+            <div class="badge exam">Exam</div>
+          </div>
+          <div class="card-body">
+            The final examination schedule has been published. Students are advised to check the exam portal for their
+            subject-wise dates and venues.
+          </div>
+          <div class="card-footer">
+            Posted on: June 22, 2025
+          </div>
+        </div>
+
+        <div class="card type2" data-aos="zoom-in-left">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-music"></i> Annual Cultural Fest - Registration Open</div>
+            <div class="badge cultural">Cultural</div>
+          </div>
+          <div class="card-body">
+            Our vibrant cultural festival is coming up next month! Interested students can register for music, dance,
+            drama, and art competitions by July 10.
+          </div>
+          <div class="card-footer">
+            Posted on: June 20, 2025
+          </div>
+        </div>
+
+        <div class="card type3" data-aos="zoom-in-right">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-users"></i> Staff & Parents Meeting</div>
+            <div class="badge meeting">Meeting</div>
+          </div>
+          <div class="card-body">
+            A meeting will be held between staff and parents to discuss student academic performance and disciplinary
+            policies. Attendance is mandatory.
+          </div>
+          <div class="card-footer">
+            Posted on: June 18, 2025
+          </div>
+        </div>
+
+        <div class="card type4" data-aos="zoom-in-left">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-chalkboard-teacher"></i> Seminar on Career Counseling</div>
+            <div class="badge seminar">Seminar</div>
+          </div>
+          <div class="card-body">
+            The school is organizing a seminar by industry experts on career planning and skill-building for high school
+            students. Limited seats available.
+          </div>
+          <div class="card-footer">
+            Posted on: June 15, 2025
+          </div>
+        </div>
+
+        <div class="card type5" data-aos="zoom-in-right">
+          <div class="card-header">
+            <div class="card-title"><i class="fas fa-star"></i> Independence Day Celebration Program</div>
+            <div class="badge function">Function</div>
+          </div>
+          <div class="card-body">
+            Celebrate Independence Day with us on August 15. A variety of performances and activities will be held on
+            campus. All are invited!
+          </div>
+          <div class="card-footer">
+            Posted on: June 12, 2025
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      offset: 120,
+      once: true
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

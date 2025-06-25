@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Progress Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #fbe9e7);
+            color: #333;
+        }
+
+        .main-content {
+            padding: 30px 30px 50px 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+            color: #2e7d32;
+            margin-bottom: 30px;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        @media (max-width: 600px) {
+            .title {
+                font-size: 22px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- top and bottom navigation bar -->
+    <!-- Header -->
+    <header>
+        <div class="hamburger" onclick="toggleSidebar()">☰</div>
+        <!-- <div class="logo">MySchool</div> -->
+        <div class="bell"><i class="fa-solid fa-bell"></i></div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span class="close-btn" onclick="toggleSidebar()">✖</span>
+        </div>
+        <div class="profile-section">
+            <img src="Untitled (22).png" alt="Profile Picture">
+            <h3>Mary Jane</h3>
+            <p>Student</p>
+        </div>
+        <ul>
+            <li><a href="#" onclick="switchTab('profile')">Profile</a></li>
+            <li><a href="#">Privacy & Policy</a></li>
+            <li><a href="#">Terms & condition</a></li>
+            <li><a href="#">Log Out</a></li>
+        </ul>
+    </aside>
+
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+
+    <div class="bottom-nav">
+        <a href="index.html"><button>
+                <i class="fas fa-home"></i>
+                <p>Home</p>
+            </button></a>
+        <a href="explore.html"><button>
+                <i class="fa-solid fa-compass"></i>
+                <p>Explore</p>
+            </button></a>
+        <a href="performance.html"><button class="active">
+                <i class="fa-solid fa-square-poll-vertical"></i>
+                <p>Results</p>
+            </button></a>
+        <a href="contact.html"><button>
+                <i class="fa-solid fa-headset"></i>
+                <p>Contact</p>
+            </button></a>
+    </div>
+
+
+
+
+
+    <!-- Bar Chart Container -->
+    <section class="main-content">
+        <div class="container">
+            <div class="title">📊 Student Progress Analysis</div>
+            <canvas id="progressChart"></canvas>
+        </div>
+
+        <!-- Line Chart Container -->
+        <div class="container">
+            <div class="title">📈 Exam Performance Analysis</div>
+            <canvas id="examChart"></canvas>
+        </div>
+    </section>
+    <script>
+        // Bar Chart - All Tests
+        const ctx = document.getElementById('progressChart').getContext('2d');
+        const progressChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Test 1', 'Test 2', 'Mid-Term', 'Test 3', 'Final Exam'],
+                datasets: [{
+                    label: 'Marks Obtained',
+                    data: [72, 85, 78, 90, 88],
+                    backgroundColor: [
+                        '#4db6ac',
+                        '#81c784',
+                        '#64b5f6',
+                        '#9575cd',
+                        '#ffb74d'
+                    ],
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#fff',
+                        titleColor: '#000',
+                        bodyColor: '#333',
+                        borderColor: '#ccc',
+                        borderWidth: 1
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 10,
+                            color: '#444'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Marks (%)',
+                            color: '#2e7d32',
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#444'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Line Chart - Exams Only
+        const examCtx = document.getElementById('examChart').getContext('2d');
+        const examChart = new Chart(examCtx, {
+            type: 'line',
+            data: {
+                labels: ['Mid-Term', 'Final Exam'],
+                datasets: [{
+                    label: 'Exam Marks',
+                    data: [78, 88],
+                    backgroundColor: 'rgba(100, 181, 246, 0.2)',
+                    borderColor: '#42a5f5',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#1e88e5',
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#fff',
+                        titleColor: '#000',
+                        bodyColor: '#333',
+                        borderColor: '#ccc',
+                        borderWidth: 1
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 10,
+                            color: '#444'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Marks (%)',
+                            color: '#2e7d32',
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#444'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

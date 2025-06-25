@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MySchool App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="hamburger" onclick="toggleSidebar()">☰</div>
+        <!-- <div class="logo">MySchool</div> -->
+        <div class="bell"><i class="fa-solid fa-bell"></i></div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span class="close-btn" onclick="toggleSidebar()">✖</span>
+        </div>
+        <div class="profile-section">
+            <img src="profile.jpg" alt="Profile Picture">
+            <h3>Mary Jane</h3>
+            <p>Student</p>
+        </div>
+        <ul>
+            <li><a href="#" onclick="switchTab('profile')">Profile</a></li>
+            <li><a href="#">Privacy & Policy</a></li>
+            <li><a href="#">Terms & condition</a></li>
+            <li><a href="#">Log Out</a></li>
+        </ul>
+    </aside>
+
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Bottom Navigation bar -->
+    <div class="bottom-nav">
+        <a href="index.html"><button class="active">
+                <i class="fas fa-home"></i>
+                <p>Home</p>
+            </button>
+        </a>
+        <a href="explore.html"><button>
+                <i class="fa-solid fa-compass"></i>
+                <p>Explore</p>
+            </button>
+        </a>
+        <a href="performance.html"><button>
+                <i class="fa-solid fa-square-poll-vertical"></i>
+                <p>Results</p>
+            </button>
+        </a>
+        <a href="contact.html"><button>
+                <i class="fa-solid fa-headset"></i>
+                <p>Contact</p>
+            </button>
+        </a>
+    </div>
+
+
+
+
+    <!-- profile section at home page starts -->
+    <section class="page active" id="home">
+        <h2>Welcome Back, Mary 👋</h2>
+
+        <div class="profile-card" data-aos="zoom-in">
+            <div class="profile-image">
+                <img src="profile.jpg" alt="Profile Picture" />
+            </div>
+            <div class="profile-details">
+                <h3>Mary Jane</h3>
+                <div class="info">
+                    <p><i class="fas fa-id-card"></i> <strong>Roll No:</strong> 1234</p>
+                    <p><i class="fas fa-school"></i> <strong>School:</strong> Green Valley High School</p>
+                    <p><i class="fas fa-graduation-cap"></i> <strong>Class:</strong> 10th Grade</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Dashboard -->
+      
+    <div class="dashboard-tilte">
+        <h2>Services</h2>
+    </div>
+    <main class="dashboard">
+
+        <!-- <div class="card">
+            <h3>📊 Student Progress</h3>
+            <p>Track academic growth and performance.</p>
+        </div> -->
+        <!-- <div class="card">
+            <h3>📅 Attendance</h3>
+            <p>Daily attendance reports for each student.</p>
+        </div> -->
+
+        <a href="exam.html">
+            <div class="card" data-aos="zoom-in">
+                <i>📝</i>
+                <h3> Test & Exams</h3>
+                <p>Manage schedules and results.</p>
+            </div>
+        </a>
+        <a href="teachers.html">
+            <div class="card" data-aos="zoom-in">
+                <i>👩‍🏫</i>
+                <h3>Teachers Info</h3>
+                <p>Profiles and contact of staff.</p>
+            </div>
+        </a>
+        <a href="announcements.html">
+            <div class="card" data-aos="zoom-in">
+                <i>📢</i>
+                <h3> Announcements</h3>
+                <p>Latest school updates and news.</p>
+            </div>
+        </a>
+        <a href="performance.html">
+            <div class="card" data-aos="zoom-in">
+                <i>📊</i>
+                <h3>Results</h3>
+                <p>Track academic performance.</p>
+            </div>
+        </a>
+        <a href="ptm.html">
+            <div class="card" data-aos="zoom-in">
+                <i>👨‍👩‍👦</i>
+                <h3>PTM</h3>
+                <p>Parents Meetings</p>
+            </div>
+        </a>
+    </main>
+
+
+    <!-- Contact Section -->
+    <div class="contact" data-aos="zoom-in-right">
+        <h2>School Contact </h2>
+        <p><strong>Email:</strong> contact@myschool.com</p>
+        <p><strong>Phone:</strong> +91 98765 43210</p>
+        <p><strong>Address:</strong> 123 School Road, Education City</p>
+    </div>
+
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 120,
+            once: true
+        });
+    </script>
+
+    <!-- JS -->
+    <script src="script.js">  </script>
+
+</body>
+
+</html>

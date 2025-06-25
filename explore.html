@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Explore Module</title>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .main-content {
+            background: #f8fafc;
+            color: #1e293b;
+            padding: 20px 20px 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #0f172a;
+        }
+
+        .header p {
+            margin-top: 5px;
+            color: #475569;
+        }
+
+        .grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            margin-top: 30px;
+        }
+
+        .card {
+            color: #fff;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -20%;
+            right: -20%;
+            width: 150%;
+            height: 150%;
+            background: url('https://www.transparenttextures.com/patterns/cubes.png') repeat;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #111111;
+        }
+
+        /* Gradient backgrounds */
+        .attendance {
+            background: linear-gradient(135deg, #4f46e5, #3b82f6);
+        }
+
+        .syllabus {
+            background: linear-gradient(135deg, #ec4899, #f472b6);
+        }
+
+        .transport {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+        }
+
+
+        .special {
+            background: linear-gradient(135deg, #14b8a6, #2dd4bf);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #1e293b;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- top and bottom navbar starts here -->
+
+    <!-- Header -->
+    <header>
+        <div class="hamburger" onclick="toggleSidebar()">☰</div>
+        <div class="bell"><i class="fa-solid fa-bell"></i></div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span class="close-btn" onclick="toggleSidebar()">✖</span>
+        </div>
+        <div class="profile-section">
+            <img src="Untitled (22).png" alt="Profile Picture">
+            <h3>Mary Jane</h3>
+            <p>Student</p>
+        </div>
+        <ul>
+            <li><a href="#" onclick="switchTab('profile')">Profile</a></li>
+            <li><a href="#">Privacy & Policy</a></li>
+            <li><a href="#">Terms & condition</a></li>
+            <li><a href="#">Log Out</a></li>
+        </ul>
+    </aside>
+
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+
+    <div class="bottom-nav">
+        <a href="index.html"><button>
+                <i class="fas fa-home"></i>
+                <p>Home</p>
+            </button></a>
+        <a href="explore.html"><button class="active">
+                <i class="fa-solid fa-compass"></i>
+                <p>Explore</p>
+            </button></a>
+        <a href="performance.html"><button>
+                <i class="fa-solid fa-square-poll-vertical"></i>
+                <p>Results</p>
+            </button></a>
+        <a href="contact.html"><button>
+                <i class="fa-solid fa-headset"></i>
+                <p>Contact</p>
+            </button></a>
+    </div>
+
+
+
+    <!-- main contents starts here -->
+    <section class="main-content">
+        <div class="container">
+            <div class="header" data-aos="fade-down">
+                <h1>🚀 Explore Our Premium Services</h1>
+                <p>All the essential tools and features in one place</p>
+            </div>
+
+            <div class="grid">
+                <div class="card attendance" data-aos="zoom-in">
+                    <i class="fas fa-user-check"></i>
+                    <h3>Attendance</h3>
+                    <p>Track daily student attendance in real-time.</p>
+                </div>
+
+                <div class="card syllabus" data-aos="zoom-in">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Syllabus</h3>
+                    <p>Access full syllabus for each subject & grade.</p>
+                </div>
+
+                <div class="card transport" data-aos="zoom-in">
+                    <i class="fas fa-bus-alt"></i>
+                    <h3>Transport</h3>
+                    <p>Bus tracking, route maps & driver info.</p>
+                </div>
+
+                <div class="card special" data-aos="zoom-in">
+                    <i class="fas fa-star"></i>
+                    <h3>Special Features</h3>
+                    <p>Explore surprises and app-exclusive features!</p>
+                </div>
+            </div>
+
+            <div class="section-title" data-aos="fade-up">✨ More amazing features coming soon!</div>
+        </div>
+    </section>
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 120,
+            once: true
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
